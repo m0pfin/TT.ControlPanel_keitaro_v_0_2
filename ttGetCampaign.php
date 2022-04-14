@@ -42,7 +42,7 @@ foreach ($tokens as $token) {
         'trace-log-user-id: ' . $idAccount . '',
         'x-csrftoken: ' . $csrfToken . '',
         'referer: https://ads.tiktok.com/i18n/perf?aadvid=' . $idAccount,
-        'cookie: sessionid_ss_ads=' . $sessionid_ss_ads . ';'
+        'cookie: csrftoken='. $csrfToken .'; sessionid_ss_ads=' . $sessionid_ss_ads . ';'
     ];
 
     $ch = curl_init();
