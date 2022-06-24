@@ -1,18 +1,18 @@
 <?php 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 
 //$date = date("Y-m-d"); // Сегодняшняя дата
 
 function sendCostKeitaro($cost,$id_camp_keitaro, $date){
 
-    $apikey='ВАШ_API_KEY'; // ваш api ключ для доступа к API кейтаро
-    $domain='http://199.99.99.999'; // домен/ip на котором висит кейтаро
+    $apikey='YOUR_TOKEN_KEITARO'; // ваш api ключ для доступа к API кейтаро
+    $domain='http://00.000.000.00'; // домен/ip на котором висит кейтаро БЕЗ СЛЕША В КОНЦЕ!!!
     $timezone='Europe/Moscow'; // ваша временная зона
-    $currency = 'USD';
+    $currency = 'EUR';
 
     $curl = curl_init();
 
@@ -61,5 +61,6 @@ function sendCostKeitaro($cost,$id_camp_keitaro, $date){
     }
     else{
         echo "Не смогли загрузить расходы для кампании " . $id_camp_keitaro . " <br> Возможно такой кампании не существует <br>";
+        var_dump($updateres);
     }
 }
