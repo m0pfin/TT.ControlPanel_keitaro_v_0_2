@@ -76,12 +76,12 @@ include __DIR__.'/include/head.php';
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
-                    <h6 class="h2 d-inline-block mb-0">Токены</h6>
+                    <h6 class="h2 d-inline-block mb-0">Аккаунты</h6>
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb breadcrumb-links">
                             <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Токены</li>
+                            <li class="breadcrumb-item active" aria-current="page">Аккаунты</li>
                         </ol>
                     </nav>
                 </div>
@@ -102,36 +102,12 @@ include __DIR__.'/include/head.php';
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Всего аккаунтов</h5>
-                            <span class="h2 font-weight-bold mb-0"><?php echo $db->countAll('tokens','id') ?></span>
-                        </div>
-                        <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                <i class="ni ni-active-40"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <!--                <p class="mt-3 mb-0 text-sm">-->
-                    <!--                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>-->
-                    <!--                    <span class="text-nowrap">Since last month</span>-->
-                    <!--                </p>-->
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Активные</h5>
-                            <span class="h2 font-weight-bold mb-0">
-                            <?php
+                            <span class="h2 font-weight-bold mb-0"><?php
                             $leadtoday = $db->query('SELECT * FROM tokens WHERE status = 1');
                             $leads_today = count($leadtoday);
                             echo $leads_today;
-                            ?>
-                        </span>
+                            ?></span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -155,10 +131,39 @@ include __DIR__.'/include/head.php';
                             <h5 class="card-title text-uppercase text-muted mb-0">Заблокированные</h5>
                             <span class="h2 font-weight-bold mb-0">
                             <?php
-                            $leadlast = $db->query('SELECT * FROM tokens WHERE status = 2');
-                            $leads_last = count($leadlast);
-                            echo $leads_last;
+                            $leadtoday = $db->query('SELECT * FROM tokens WHERE status = 1');
+                            $leads_today = count($leadtoday);
+                            echo $leads_today;
                             ?>
+                        </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="ni ni-active-40"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                <p class="mt-3 mb-0 text-sm">-->
+                    <!--                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>-->
+                    <!--                    <span class="text-nowrap">Since last month</span>-->
+                    <!--                </p>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Кол-во лидов</h5>
+                            <span class="h2 font-weight-bold mb-0">
+                            <?php 
+                       
+                       $res = $db->query("SELECT SUM(cpa) FROM `tokens`");
+                       //var_dump($res);
+                       echo $res[0]["SUM(cpa)"];
+                       ?>
                         </span>
                         </div>
                         <div class="col-auto">
@@ -180,14 +185,14 @@ include __DIR__.'/include/head.php';
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">В разработке</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Потрачено сегодня</h5>
                             <span class="h2 font-weight-bold mb-0">
-                            <?php
-//                            $leadtoday = $db->query('SELECT * FROM tokens WHERE status = 2');
-//                            $leads_today = count($leadtoday);
-//                            echo $leads_today;
-                            ?>
-                        </span>
+                            <?php 
+                       
+                       $res = $db->query("SELECT SUM(cost) FROM `tokens`");
+                       //var_dump($res);
+                       echo $res[0]["SUM(cost)"].' $';
+                       ?>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -357,6 +362,7 @@ include __DIR__.'/include/head.php';
                         <?php
                     }
                     ?>
+                   
                     </tbody>
 
                 </table>
@@ -417,4 +423,3 @@ include __DIR__.'/include/head.php';
 <?php
 include 'include/foot.php';
 ?>
-
