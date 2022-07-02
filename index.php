@@ -131,7 +131,7 @@ include __DIR__.'/include/head.php';
                             <h5 class="card-title text-uppercase text-muted mb-0">Заблокированные</h5>
                             <span class="h2 font-weight-bold mb-0">
                             <?php
-                            $leadtoday = $db->query('SELECT * FROM tokens WHERE status = 1');
+                            $leadtoday = $db->query('SELECT * FROM tokens WHERE status = 2');
                             $leads_today = count($leadtoday);
                             echo $leads_today;
                             ?>
@@ -423,3 +423,4 @@ include __DIR__.'/include/head.php';
 <?php
 include 'include/foot.php';
 ?>
+
