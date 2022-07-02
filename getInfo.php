@@ -1,5 +1,6 @@
 <?php
 
+date_default_timezone_set('Europe/Moscow'); // Часовой пояс для ТТ
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -29,7 +30,10 @@ foreach ($tokens as $token) {
     }
     if($getStatus['data']['reject_reason'] == '-'){
         $db->execute("UPDATE `tokens` SET `status`='1' WHERE id_ad_account='$idAccount'");
-    }else{
+    }elseif($getStatus['data']['reject_reason'] == ''){
+        $db->execute("UPDATE `tokens` SET `status`='1' WHERE id_ad_account='$idAccount'");
+    }
+        else{
         $db->execute("UPDATE `tokens` SET `status`='2' WHERE id_ad_account='$idAccount'");
         //echo $getStatus['data']['reject_reason']; // Причина бана аккаунта
     }
