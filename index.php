@@ -104,10 +104,10 @@ include __DIR__.'/include/head.php';
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Активные</h5>
                             <span class="h2 font-weight-bold mb-0"><?php
-                            $leadtoday = $db->query('SELECT * FROM tokens WHERE status = 1');
-                            $leads_today = count($leadtoday);
-                            echo $leads_today;
-                            ?></span>
+                                $leadtoday = $db->query('SELECT * FROM tokens WHERE status = 1');
+                                $leads_today = count($leadtoday);
+                                echo $leads_today;
+                                ?></span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -158,12 +158,12 @@ include __DIR__.'/include/head.php';
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Кол-во лидов</h5>
                             <span class="h2 font-weight-bold mb-0">
-                            <?php 
-                       
-                       $res = $db->query("SELECT SUM(cpa) FROM `tokens`");
-                       //var_dump($res);
-                       echo $res[0]["SUM(cpa)"];
-                       ?>
+                            <?php
+
+                            $res = $db->query("SELECT SUM(cpa) FROM `tokens`");
+                            //var_dump($res);
+                            echo $res[0]["SUM(cpa)"];
+                            ?>
                         </span>
                         </div>
                         <div class="col-auto">
@@ -187,12 +187,12 @@ include __DIR__.'/include/head.php';
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Потрачено сегодня</h5>
                             <span class="h2 font-weight-bold mb-0">
-                            <?php 
-                       
-                       $res = $db->query("SELECT SUM(cost) FROM `tokens`");
-                       //var_dump($res);
-                       echo $res[0]["SUM(cost)"].' $';
-                       ?>
+                            <?php
+
+                            $res = $db->query("SELECT SUM(cost) FROM `tokens`");
+                            //var_dump($res);
+                            echo $res[0]["SUM(cost)"].' $';
+                            ?>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -362,7 +362,7 @@ include __DIR__.'/include/head.php';
                         <?php
                     }
                     ?>
-                   
+
                     </tbody>
 
                 </table>
@@ -401,6 +401,15 @@ include __DIR__.'/include/head.php';
                                             <input class="form-control" name="token" placeholder="Токен аккаунта" type="text">
                                         </div>
                                     </div>
+                                        <div class="form-group">
+                                        <div class="input-group input-group-merge input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                            </div>
+                                            <input class="form-control" name="id" placeholder="ID аккаунта" type="text">
+                                        </div>
+
+                                    </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary my-4">Добавить</button>
                                     </div>
@@ -423,4 +432,3 @@ include __DIR__.'/include/head.php';
 <?php
 include 'include/foot.php';
 ?>
-
